@@ -1,0 +1,84 @@
+//On travaille avec une procédure //
+PROCEDURE dot_product(VAR ps: FLOAT , arr1 , arr2 : ARRAY_OF FLOAT)
+VAR
+    i : INTEGER;
+BEGIN
+    FOR i FROM 0 TO arr1.length -1  DO
+        ps := ps + (arr1[i]*arr2[i]);
+    END_FOR
+END
+
+ALGORITHM algorithm_name
+VAR
+    ps : FLOAT := 0;
+    Vecteurs : ARRAY_OF FLOAT [100][3];
+    V1 , V2 : ARRAY_OF FLOAT [3];
+    N , n1 , n2 : INTEGER;
+    i,j : INTEGER;
+
+BEGIN
+    Read (N);
+
+    FOR i FROM 0 TO (2*N)-1 DO
+      FOR j FROM 0 TO 2 DO
+        Read (Vecteurs[i][j]);
+      END_FOR
+    END_FOR
+
+    n1 := Math.floor(Math.random() * (N+1));
+    n2 := Math.floor(Math.random() * (N+1));
+
+    FOR i FROM 0 TO 2  DO
+        V1[i] := Vecteurs [n1][i];
+        V2[i] := Vecteurs [n2][i];
+    END_FOR
+
+    dot_product(ps , V1 , V2);
+    IF (ps = 0) THEN
+        Write ("Les deux vecteurs",V1,"et",V2,"sont orthogonaux")
+    END_IF
+END
+
+
+
+//On travaille avec une fonction //
+FUNCTION dot_product(VAR ps: FLOAT , arr1 , arr2 : ARRAY_OF FLOAT) : FLOAT
+VAR
+    i : INTEGER;
+BEGIN
+    FOR i FROM 0 TO arr1.length -1  DO
+        ps := ps + (arr1[i]*arr2[i]);
+    END_FOR
+    RETURN ps ; 
+END
+
+ALGORITHM algorithm_name
+VAR
+    ps : FLOAT := 0;
+    Vecteurs : ARRAY_OF FLOAT [100][3];
+    V1 , V2 : ARRAY_OF FLOAT [3];
+    N , n1 , n2 : INTEGER;
+    i,j : INTEGER;
+
+BEGIN
+    Read (N);
+
+    FOR i FROM 0 TO (2*N)-1 DO
+      FOR j FROM 0 TO 2 DO
+        Read (Vecteurs[i][j]);
+      END_FOR
+    END_FOR
+
+    n1 := Math.floor(Math.random() * (N+1));
+    n2 := Math.floor(Math.random() * (N+1));
+
+    FOR i FROM 0 TO 2  DO
+        V1[i] := Vecteurs [n1][i];
+        V2[i] := Vecteurs [n2][i];
+    END_FOR
+
+    ps := dot_product(ps , V1 , V2);
+    IF (ps = 0) THEN
+        Write ("Les deux vecteurs",V1,"et",V2,"sont orthogonaux")
+    END_IF
+END
